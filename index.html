@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Keerthi! 🎂</title>
+    <meta name="description" content="A special birthday website made with love for my best friend Keerthi!">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        romantic: ['Pinyon Script', 'cursive'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+</head>
+<body class="bg-[#fff0f5] text-gray-800 font-sans cursor-none antialiased select-none overflow-x-hidden">
+
+    <!-- Welcome Screen (First Layer) -->
+    <div id="welcome-screen">
+        <div class="welcome-content">
+            <div class="pulse-heart">💖</div>
+            <h1>A Special Surprise Awaits...</h1>
+            <p>Tap to Unlock the Magic</p>
+            <div class="tap-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 5v14M5 12l7 7 7-7"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- Secret Login Gate -->
+    <div id="login-gate">
+        <div class="login-box">
+            <div class="login-header">
+                <span class="heart-icon">💖</span>
+                <h2>Bestie Access Only</h2>
+                <p>Please enter the secret codes to unlock your surprise!</p>
+            </div>
+            <div class="login-form">
+                <div class="input-group">
+                    <label>Username</label>
+                    <input type="text" id="login-user" placeholder="Your Bestie Name..." autocomplete="off">
+                </div>
+                <div class="input-group">
+                    <label>Secret Code</label>
+                    <input type="password" id="login-pass" placeholder="The Birthday Password..." autocomplete="off">
+                </div>
+                <button id="login-btn">Unlock Memories ✨</button>
+                <p id="login-error" class="error-msg">Incorrect code, try again Bestie! 🌸</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Three.js Canvas Removed -->
+
+    <!-- Custom Cursor -->
+    <div id="custom-cursor">
+        <div class="cursor-dot"></div>
+    </div>
+
+        <source src="https://assets.mixkit.co/music/preview/mixkit-beautiful-dream-493.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Cinematic Overlay -->
+    <div id="cinematic-overlay"></div>
+
+    <!-- ==================== HERO ==================== -->
+    <section id="hero">
+        <!-- Floating orbs -->
+        <div class="orb orb-pink gs-hero-glow"></div>
+        <div class="orb orb-purple gs-hero-glow-2"></div>
+
+        <div class="hero-inner">
+            <!-- Portrait -->
+            <div class="hero-portrait hero-text">
+                <img src="Photos-3-001/1768155484093.jpg" alt="Keerthi">
+                <span class="cake-badge">🎂</span>
+            </div>
+
+            <p class="hero-text hero-sub">A Celebration of My Amazing Best Friend</p>
+
+            <h1 class="hero-text hero-title">
+                Happy Birthday<br>to My Best Friend Keethu! 💖
+            </h1>
+
+            <div class="typewriter-wrap">
+                <p id="typewriter" class="font-serif italic"></p>
+            </div>
+
+            <button id="surprise-btn" class="hero-text surprise-btn">
+                Open Your Surprise &nbsp;🎁
+            </button>
+        </div>
+
+        <div class="scroll-hint hero-scroll-indicator">
+            <p>Scroll</p>
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+        </div>
+    </section>
+
+    <!-- ==================== MAIN (revealed on button click) ==================== -->
+    <main id="main-content" class="hidden">
+
+        <!-- ===== MEMORIES ===== -->
+        <section id="memories">
+            <div class="section-orb orb-gold"></div>
+            <h2 class="section-title gs-title">Beautiful Memories 📸</h2>
+
+            <div class="polaroid-grid">
+
+                <!-- Card 1 -->
+                <div class="polaroid-wrap gs-polaroid">
+                    <div class="polaroid-inner" style="--r: -3deg">
+                        <div class="polaroid-img">
+                            <img src="Photos-3-001/1768155484093.jpg" alt="Keerthi in pink saree">
+                        </div>
+                        <p class="polaroid-caption">My partner in crime 👯‍♀️</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="polaroid-wrap gs-polaroid" style="--mt: 60px">
+                    <div class="polaroid-inner" style="--r: 2deg">
+                        <div class="polaroid-img">
+                            <img src="Photos-3-001/IMG-20260504-WA0021.jpg" alt="Keerthi with flowers">
+                        </div>
+                        <p class="polaroid-caption">Pure joy 🌸</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <!-- Photo 1 -->
+                <div class="polaroid-card gs-polaroid" style="--rotation: -2deg">
+                    <div class="polaroid-inner">
+                        <img src="Photos-3-001/1768155484083.jpg" alt="Memory 1" loading="lazy">
+                        <p class="polaroid-caption">Laughter & Joy ✨</p>
+                    </div>
+                </div>
+                <!-- Photo 2 -->
+                <div class="polaroid-card gs-polaroid" style="--rotation: 3deg">
+                    <div class="polaroid-inner">
+                        <img src="Photos-3-001/1768155484093.jpg" alt="Memory 2" loading="lazy">
+                        <p class="polaroid-caption">Bestie Moments 💖</p>
+                    </div>
+                </div>
+                <!-- Photo 3 -->
+                <div class="polaroid-card gs-polaroid" style="--rotation: -1.5deg">
+                    <div class="polaroid-inner">
+                        <img src="Photos-3-001/1768155484098.jpg" alt="Memory 3" loading="lazy">
+                        <p class="polaroid-caption">Always Together 👯‍♀️</p>
+                    </div>
+                </div>
+                <!-- Photo 4 -->
+                <div class="polaroid-card gs-polaroid" style="--rotation: 2.5deg">
+                    <div class="polaroid-inner">
+                        <img src="Photos-3-001/IMG-20260504-WA0021.jpg" alt="Memory 4" loading="lazy">
+                        <p class="polaroid-caption">Pure Happiness 🌸</p>
+                    </div>
+                </div>
+                <!-- Photo 5 -->
+                <div class="polaroid-card gs-polaroid" style="--rotation: -3deg">
+                    <div class="polaroid-inner">
+                        <img src="Photos-3-001/IMG-20260504-WA0025.jpg" alt="Memory 5" loading="lazy">
+                        <p class="polaroid-caption">My Favorite Person ✨</p>
+                    </div>
+                </div>
+                <!-- Photo 6 -->
+                <div class="polaroid-card gs-polaroid" style="--rotation: 1.5deg">
+                    <div class="polaroid-inner">
+                        <img src="Photos-3-001/IMG-20260504-WA0027.jpg" alt="Memory 6" loading="lazy">
+                        <p class="polaroid-caption">Golden Times ☀️</p>
+                    </div>
+                </div>
+                <!-- Photo 7 -->
+                <div class="polaroid-card gs-polaroid" style="--rotation: -2.5deg">
+                    <div class="polaroid-inner">
+                        <img src="Photos-3-001/IMG-20260504-WA0031.jpg" alt="Memory 7" loading="lazy">
+                        <p class="polaroid-caption">Unforgettable Days 💕</p>
+                    </div>
+                </div>
+                <!-- Photo 8 -->
+                <div class="polaroid-card gs-polaroid" style="--rotation: 2deg">
+                    <div class="polaroid-inner">
+                        <img src="Photos-3-001/IMG20250731162447.jpg" alt="Memory 8" loading="lazy">
+                        <p class="polaroid-caption">Soulmate Vibes 💗</p>
+                    </div>
+                </div>
+                <!-- Photo 9 -->
+                <div class="polaroid-card gs-polaroid" style="--rotation: -1.5deg">
+                    <div class="polaroid-inner">
+                        <img src="Photos-3-001/IMG20250731162450.jpg" alt="Memory 9" loading="lazy">
+                        <p class="polaroid-caption">Infinite Bonds ♾️</p>
+                    </div>
+                </div>
+                <!-- Photo 10 -->
+                <div class="polaroid-card gs-polaroid" style="--rotation: 3deg">
+                    <div class="polaroid-inner">
+                        <img src="Photos-3-001/IMG20250731163424.jpg" alt="Memory 10" loading="lazy">
+                        <p class="polaroid-caption">Radiant Smiles ✨</p>
+                    </div>
+                </div>
+                <!-- Photo 11 -->
+                <div class="polaroid-card gs-polaroid" style="--rotation: -2.5deg">
+                    <div class="polaroid-inner">
+                        <img src="Photos-3-001/IMG20250731164059.jpg" alt="Memory 11" loading="lazy">
+                        <p class="polaroid-caption">Birthday Queen 👑</p>
+                    </div>
+                </div>
+                <!-- Photo 12 -->
+                <div class="polaroid-card gs-polaroid" style="--rotation: 1.5deg">
+                    <div class="polaroid-inner">
+                        <img src="Photos-3-001/WhatsApp%20Image%202026-05-03%20at%2021.45.12.jpeg" alt="Memory 12" loading="lazy">
+                        <p class="polaroid-caption">Sweetest Soul 🍭</p>
+                    </div>
+                </div>
+                <!-- Photo 13 -->
+                <div class="polaroid-card gs-polaroid" style="--rotation: -2deg">
+                    <div class="polaroid-inner">
+                        <img src="Photos-3-001/WhatsApp%20Image%202026-05-03%20at%2021.47.08.jpeg" alt="Memory 13" loading="lazy">
+                        <p class="polaroid-caption">True Friendship 🤝</p>
+                    </div>
+                </div>
+                <!-- Photo 14 -->
+                <div class="polaroid-card gs-polaroid" style="--rotation: 2.5deg">
+                    <div class="polaroid-inner">
+                        <img src="Photos-3-001/WhatsApp%20Image%202026-05-03%20at%2021.47.11%20(2).jpeg" alt="Memory 14" loading="lazy">
+                        <p class="polaroid-caption">Magic Moments ✨</p>
+                    </div>
+                </div>
+                <!-- Photo 15 -->
+                <div class="polaroid-card gs-polaroid" style="--rotation: -3deg">
+                    <div class="polaroid-inner">
+                        <img src="Photos-3-001/WhatsApp%20Image%202026-05-03%20at%2021.47.12%20(1).jpeg" alt="Memory 15" loading="lazy">
+                        <p class="polaroid-caption">Always Smiling 😊</p>
+                    </div>
+                </div>
+                <!-- Photo 16 -->
+                <div class="polaroid-card gs-polaroid" style="--rotation: 1.5deg">
+                    <div class="polaroid-inner">
+                        <img src="Photos-3-001/WhatsApp%20Image%202026-05-03%20at%2021.47.13%20(1).jpeg" alt="Memory 16" loading="lazy">
+                        <p class="polaroid-caption">Partners in Fun 🎭</p>
+                    </div>
+                </div>
+                <!-- Photo 17 -->
+                <div class="polaroid-card gs-polaroid" style="--rotation: -2deg">
+                    <div class="polaroid-inner">
+                        <img src="Photos-3-001/WhatsApp%20Image%202026-05-03%20at%2021.47.20.jpeg" alt="Memory 17" loading="lazy">
+                        <p class="polaroid-caption">Lifetime Bestie ❤️</p>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="polaroid-wrap gs-polaroid" style="--mt: 0px">
+                    <div class="polaroid-inner" style="--r: -1deg">
+                        <div class="polaroid-img">
+                            <img src="Photos-3-001/WhatsApp%20Image%202026-05-03%20at%2021.45.12.jpeg" alt="Cafe together">
+                        </div>
+                        <p class="polaroid-caption">Us, always 💑</p>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="polaroid-wrap gs-polaroid" style="--mt: 40px">
+                    <div class="polaroid-inner" style="--r: 2deg">
+                        <div class="polaroid-img">
+                            <img src="Photos-3-001/WhatsApp%20Image%202026-05-03%20at%2021.47.08.jpeg" alt="Rooftop selfie">
+                        </div>
+                        <p class="polaroid-caption">Happy days ☕✨</p>
+                    </div>
+                </div>
+
+                <!-- Card 7 -->
+                <div class="polaroid-wrap gs-polaroid" style="--mt: 60px">
+                    <div class="polaroid-inner" style="--r: -3deg">
+                        <div class="polaroid-img">
+                            <img src="Photos-3-001/WhatsApp%20Image%202026-05-03%20at%2021.47.13%20(1).jpeg" alt="Mall selfie">
+                        </div>
+                        <p class="polaroid-caption">Shopping queen 🛍️🎀</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ===== CINEMATIC QUOTE ===== -->
+        <section class="cinematic-quote-section">
+            <div class="gs-quote">
+                <p class="quote-text">"A best friend is someone who knows the song in your heart and can sing it back to you when you have forgotten the words."</p>
+                <p class="quote-author">To Keerthi, My Heart's Song</p>
+            </div>
+        </section>
+
+        <!-- ===== REASONS ===== -->
+        <section id="reasons">
+            <div class="reasons-bg"></div>
+            <div class="reasons-orb"></div>
+            <div class="reasons-inner">
+                <!-- Drifting Charms -->
+                <div class="friendship-charms">
+                    <span class="charm charm-1">♾️</span>
+                    <span class="charm charm-2">🤝</span>
+                    <span class="charm charm-3">💍</span>
+                    <span class="charm charm-4">🍭</span>
+                </div>
+            <h2 class="section-title gs-title">Why You're My Bestie for Life ✨</h2>
+            
+            <div class="reasons-flow-container">
+                <div class="reasons-flow-track">
+                    <!-- Original Set -->
+                    <div class="reason-card gs-reason">
+                        <div class="reason-icon" style="background: #fdf2f8;">👯‍♀️</div>
+                        <h3>Partner in Crime</h3>
+                        <p>We know everything about each other, and that's what makes us the ultimate best friends.</p>
+                    </div>
+                    <div class="reason-card gs-reason">
+                        <div class="reason-icon" style="background: #fff7ed;">🤝</div>
+                        <h3>True Loyalty</h3>
+                        <p>No matter what life throws at us, you're always the first person I can count on.</p>
+                    </div>
+                    <div class="reason-card gs-reason">
+                        <div class="reason-icon" style="background: #fefce8;">😂</div>
+                        <h3>Inside Jokes</h3>
+                        <p>We can have a whole conversation with just a look — you're my favorite person to laugh with.</p>
+                    </div>
+                    <div class="reason-card gs-reason">
+                        <div class="reason-icon" style="background: #f0fdf4;">💖</div>
+                        <h3>Unwavering Love</h3>
+                        <p>You've seen me at my worst and my best, and you've never left my side.</p>
+                    </div>
+                    <div class="reason-card gs-reason">
+                        <div class="reason-icon" style="background: #fef2f2;">🌱</div>
+                        <h3>Mutual Growth</h3>
+                        <p>Watching us evolve into the people we are today has been the most beautiful journey.</p>
+                    </div>
+                    <div class="reason-card gs-reason">
+                        <div class="reason-icon" style="background: #eff6ff;">☕</div>
+                        <h3>Shared Silence</h3>
+                        <p>I love that we can sit in total silence for hours and still feel perfectly understood.</p>
+                    </div>
+                    
+                    <!-- Duplicate Set for Seamless Loop -->
+                    <div class="reason-card gs-reason">
+                        <div class="reason-icon" style="background: #fdf2f8;">👯‍♀️</div>
+                        <h3>Partner in Crime</h3>
+                        <p>We know everything about each other, and that's what makes us the ultimate best friends.</p>
+                    </div>
+                    <div class="reason-card gs-reason">
+                        <div class="reason-icon" style="background: #fff7ed;">🤝</div>
+                        <h3>True Loyalty</h3>
+                        <p>No matter what life throws at us, you're always the first person I can count on.</p>
+                    </div>
+                    <div class="reason-card gs-reason">
+                        <div class="reason-icon" style="background: #fefce8;">😂</div>
+                        <h3>Inside Jokes</h3>
+                        <p>We can have a whole conversation with just a look — you're my favorite person to laugh with.</p>
+                    </div>
+                    <div class="reason-card gs-reason">
+                        <div class="reason-icon" style="background: #f0fdf4;">💖</div>
+                        <h3>Unwavering Love</h3>
+                        <p>You've seen me at my worst and my best, and you've never left my side.</p>
+                    </div>
+                    <div class="reason-card gs-reason">
+                        <div class="reason-icon" style="background: #fef2f2;">🌱</div>
+                        <h3>Mutual Growth</h3>
+                        <p>Watching us evolve into the people we are today has been the most beautiful journey.</p>
+                    </div>
+                    <div class="reason-card gs-reason">
+                        <div class="reason-icon" style="background: #eff6ff;">☕</div>
+                        <h3>Shared Silence</h3>
+                        <p>I love that we can sit in total silence for hours and still feel perfectly understood.</p>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- The Bestie Promise -->
+                <div class="promise-wrap gs-promise">
+                    <h3>Our Promise</h3>
+                    <p>"No matter where life takes us, or how many miles come between us, you will always be my first call, my loudest laugh, and my safest home."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== TIMELINE ===== -->
+        <section id="timeline">
+            <h2 class="section-title gs-title">Our Friendship Journey 🤝</h2>
+
+            <div class="timeline-wrap">
+                <div class="timeline-line-bg"></div>
+                <div class="timeline-line-progress" id="timeline-line-progress"></div>
+
+                <div class="timeline-item gs-timeline left-item">
+                    <div class="timeline-dot" style="border-color:#db2777; box-shadow:0 0 14px #db2777;"></div>
+                    <div class="timeline-card gs-timeline-content">
+                        <p class="timeline-season" style="color:#db2777;">Spring</p>
+                        <h3>New Beginnings</h3>
+                        <p>Started that amazing new chapter, growing and learning so much along the way.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item gs-timeline right-item">
+                    <div class="timeline-dot" style="border-color:#7c3aed; box-shadow:0 0 14px #7c3aed;"></div>
+                    <div class="timeline-card gs-timeline-content">
+                        <p class="timeline-season" style="color:#7c3aed;">Summer</p>
+                        <h3>Adventures</h3>
+                        <p>Trips, laughs, and unforgettable nights under the stars. Making memories.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item gs-timeline left-item">
+                    <div class="timeline-dot" style="border-color:#d97706; box-shadow:0 0 14px #d97706;"></div>
+                    <div class="timeline-card gs-timeline-content">
+                        <p class="timeline-season" style="color:#d97706;">Fall</p>
+                        <h3>Achieving Goals</h3>
+                        <p>Crushed those milestones and showed everyone exactly what you are capable of.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item gs-timeline right-item">
+                    <div class="timeline-dot" style="border-color:#16a34a; box-shadow:0 0 14px #16a34a;"></div>
+                    <div class="timeline-card gs-timeline-content">
+                        <p class="timeline-season" style="color:#16a34a;">Winter</p>
+                        <h3>Cozy Nights</h3>
+                        <p>Late night movie marathons, warm coffee, and deep talks about our future dreams.</p>
+                    </div>
+                </div>
+
+                    <div class="timeline-item gs-timeline left-item">
+                    <div class="timeline-dot" style="border-color:#0284c7; box-shadow:0 0 14px #0284c7;"></div>
+                    <div class="timeline-card gs-timeline-content">
+                        <p class="timeline-season" style="color:#0284c7;">Summer '25</p>
+                        <h3>The Big Trip</h3>
+                        <p>That unforgettable getaway where we explored new places and bonded like never before.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== BUCKET LIST ===== -->
+        <section id="bucket-list">
+            <h2 class="section-title gs-title">Bestie Bucket List ✈️</h2>
+            
+            <div class="bucket-tree-container">
+                <div class="bucket-trunk" id="bucket-trunk-progress"></div>
+                
+                <div class="bucket-tree">
+                    <!-- Branch 1 (Left) -->
+                    <div class="bucket-branch branch-left gs-bucket">
+                        <div class="bucket-card">
+                            <div class="bucket-check">✓</div>
+                            <p>Go on a spontaneous road trip with no destination</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Branch 2 (Right) -->
+                    <div class="bucket-branch branch-right gs-bucket">
+                        <div class="bucket-card">
+                            <div class="bucket-check">✓</div>
+                            <p>Attend a concert of our favorite artist together</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Branch 3 (Left) -->
+                    <div class="bucket-branch branch-left gs-bucket">
+                        <div class="bucket-card">
+                            <div class="bucket-check">✓</div>
+                            <p>Start a business or a creative project together</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Branch 4 (Right) -->
+                    <div class="bucket-branch branch-right gs-bucket">
+                        <div class="bucket-card">
+                            <div class="bucket-check">✓</div>
+                            <p>Travel to a country we've never been to</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Branch 5 (Left) -->
+                    <div class="bucket-branch branch-left gs-bucket">
+                        <div class="bucket-card">
+                            <div class="bucket-check">✓</div>
+                            <p>Create a time capsule to open in 10 years</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Branch 6 (Right) -->
+                    <div class="bucket-branch branch-right gs-bucket">
+                        <div class="bucket-card">
+                            <div class="bucket-check">✓</div>
+                            <p>Learn a new skill together (Dancing/Cooking)</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Branch 7 (Left) -->
+                    <div class="bucket-branch branch-left gs-bucket">
+                        <div class="bucket-card">
+                            <div class="bucket-check">✓</div>
+                            <p>Go on a midnight hike to see the sunrise</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== LETTER ===== -->
+        <section id="letter">
+            <h2 class="section-title gs-title">A Message For You 💌</h2>
+
+            <div class="envelope-wrapper gs-envelope">
+                <div id="envelope">
+                    <div id="envelope-front">
+                        <div class="envelope-icon">💌</div>
+                        <p>Click to open your letter</p>
+                    </div>
+                    <div id="letter-content">
+                        <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:28px;padding-bottom:20px;border-bottom:1px dashed rgba(219,39,119,0.25);">
+                            <span style="font-size:1.4rem;">🌸</span>
+                            <span style="font-family:'Pinyon Script',cursive;font-size:1.05rem;color:#db2777;opacity:0.75;letter-spacing:0.1em;">A letter written with love, just for you</span>
+                            <span style="font-size:1.4rem;">🌸</span>
+                        </div>
+                        <p id="letter-text"></p>
+                        <div style="margin-top:32px;padding-top:20px;border-top:1px dashed rgba(219,39,119,0.25);display:flex;align-items:center;justify-content:flex-end;gap:10px;">
+                            <span style="font-family:'Pinyon Script',cursive;font-size:1.2rem;color:#db2777;opacity:0.7;">With all my heart 🌹</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Made with 💖 for my amazing Best Friend — Happy Birthday Keerthi! 🎂</p>
+        </footer>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
