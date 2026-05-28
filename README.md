@@ -32,6 +32,6 @@ This site is optimized for **GitHub Pages**. To deploy:
 4.  Your cinematic celebration will be live in seconds!
 
 ## 💖 Credits
-Designed with love for a one-of-a-kind Bestie. Happy Birthday, Keerthi! 🎈✨
+Designed with love for a sweet best frnd keethu. Happy Birthday, Keethu! 🎈✨
 "# Surprise-Birthday" 
 "# Surprise-Birthday" 
